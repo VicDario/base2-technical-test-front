@@ -10,3 +10,7 @@ export interface Product {
   category: Category | string;
   images?: string[];
 }
+
+export interface CreateProduct extends Omit<Product, 'id' | 'category'> {
+  category: string;
+}
