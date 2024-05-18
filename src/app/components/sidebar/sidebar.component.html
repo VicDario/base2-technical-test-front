@@ -1,13 +1,16 @@
 <mat-sidenav-container class="sidebar-container">
   <mat-sidenav>Start</mat-sidenav>
   <mat-sidenav-content>
-    <ul>
-      <li>
-        <a routerLink="/products" routerLinkActive="active">Products</a>
-      </li>
-      <li>
-        <a routerLink="/categories" routerLinkActive="active">Categories</a>
-      </li>
-    </ul>
+    <div class="logo-container">
+      <img src="/assets/logos/store_logo.png" alt="Store" class="logo">
+    </div>
+    <h2 class="title">Dashboard</h2>
+    <nav>
+      <ul class="nav-list">
+        @for (navItem of navItems; track navItem.name) {
+          <app-nav-item [navData]="navItem"/>
+        }
+      </ul>
+    </nav>
   </mat-sidenav-content>
 </mat-sidenav-container>
