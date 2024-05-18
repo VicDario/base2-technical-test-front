@@ -1,4 +1,10 @@
 <main>
   <app-table [columns]="columns" [data]="products" />
+  <mat-paginator
+    [length]="totalItems"
+    [pageSize]="pagination.limit"
+    aria-label="Select page"
+    (page)="handlePageEvent($event)"
+  >
+  </mat-paginator>
 </main>
-
