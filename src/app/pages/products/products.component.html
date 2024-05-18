@@ -1,4 +1,7 @@
 <main>
+  <div>
+    <a routerLink="/create-product" mat-flat-button color="primary">Create Product</a>
+  </div>
   <app-table [columns]="columns" [data]="products" />
   <mat-paginator
     [length]="totalItems"

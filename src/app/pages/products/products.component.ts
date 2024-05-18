@@ -6,11 +6,13 @@ import { Pagination } from '@/models/query.model';
 import { map } from 'rxjs';
 import { Category } from '@/models/category.model';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [TableComponent, MatPaginatorModule],
+  imports: [TableComponent, MatPaginatorModule, MatButtonModule, RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
