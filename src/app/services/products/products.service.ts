@@ -22,10 +22,10 @@ export class ProductsService {
   }
 
   getProduct(id: string) {
-    // Implement the logic to get a product by ID
+    return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
   }
 
   createProduct(product: Product) {
-    // Implement the logic to create a product
+    return this.http.post<Product>(`${this.baseUrl}/products`, product);
   }
 }
