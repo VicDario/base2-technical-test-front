@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
   }
 
   handlePageEvent(event: PageEvent) {
-    this.pagination.offset = (event.pageIndex + 1) * event.pageSize;
+    this.pagination.offset = event.pageIndex * event.pageSize;
     this.pagination.limit = event.pageSize;
     this.getProducts();
   }
