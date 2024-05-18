@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@/environments/environment';
 import { Pagination } from '@/models/query.model';
-import { Product } from '@/models/product.model';
+import { CreateProduct, Product } from '@/models/product.model';
 import { ProductsResult } from '@/models/response.model';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class ProductsService {
     return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
   }
 
-  createProduct(product: Product) {
+  createProduct(product: CreateProduct) {
     return this.http.post<Product>(`${this.baseUrl}/products`, product);
   }
 }
