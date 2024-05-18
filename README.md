@@ -1,5 +1,12 @@
 # Base2TechnicalTestFront
 
+## Instalation
+```bash
+$ npm install -g pnpm
+
+$ pnpm install
+```
+
 ## Before running app
 1. Make sure backend is running
 2. Check environment, if you need to change the url
