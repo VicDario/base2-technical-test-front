@@ -1,0 +1,63 @@
+<main class="container">
+  <h1 class="title">Create Product</h1>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+    <div class="grid">
+      <mat-form-field class="field" class="field">
+        <mat-label>SKU</mat-label>
+        <input matInput formControlName="sku" type="text">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Brand</mat-label>
+        <input matInput formControlName="brand" type="text">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price" type="number" min="0">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Stock</mat-label>
+        <input matInput formControlName="stock" type="number" min="0">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          @for (category of categories; track category.name) {
+            <mat-option value="{{category.id}}">{{category.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" type="text"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="images-input-container" formArrayName="images">
+      <button mat-stroked-button type="button" (click)="addImage()">Add Image</button>
+      <div class="images-inputs">
+        @for (image of images.controls; track image.value) {
+          <mat-form-field class="field">
+            <mat-label>Image {{$index + 1}}</mat-label>
+            <input matInput [formControlName]="$index" type="text">
+            <button mat-stroked-button matSuffix color="warn" type="button" (click)="removeImage($index)" [attr.aria-label]="'Remove Image'" >
+              <fa-icon [icon]="faTrash" />
+            </button>
+            @if (image.errors) {
+              @if (image.errors['required']) {
+                <div>Required</div>
+              }
+              @if (image.errors['invalidUrl']) {
+                <div>Invalid URL</div>
+              }
+            }
+          </mat-form-field>
+        }
+      </div>
+    </div>
+    <button mat-stroked-button color="primary" type="submit" [disabled]="productForm.invalid">Create</button>
+  </form>
+</main>
+
